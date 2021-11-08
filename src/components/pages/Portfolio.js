@@ -2,137 +2,101 @@ import React from "react";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
 import Contents from "../layouts/Contents";
+import WrapTitle from "../layouts/WrapTitle";
+import ContInfo from "../layouts/ContInfo";
+import axios from "axios";
+import PortInfo from "../info/PortInfo";
 
-function Portfolio(){
-    return (
-        <div>
-            <Header />
-            <Contents>
-                <section id="portCont">
-                    <div className="container">
-                        <div className="wrap__title">
-                            <h2><strong>portfolio</strong><em>Site</em></h2>
-                        </div>
-                        <div className="port__cont">
-                            <div className="port">
-                                <a href="/">
-                                    <div className="pImg">
-                                        <img src="img/port01.jpg" alt="포트폴리오1" />
-                                    </div>
-                                    <div className="pText">
-                                        <h3>PORTFOLIO HWANG</h3>
-                                        <p>PORTFOLIO</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div className="port">
-                                <a href="/">
-                                    <div className="pImg">
-                                        <img src="img/port01.jpg" alt="포트폴리오1" />
-                                    </div>
-                                    <div className="pText">
-                                        <h3>PORTFOLIO HWANG</h3>
-                                        <p>PORTFOLIO</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div className="port">
-                                <a href="/">
-                                    <div className="pImg">
-                                        <img src="img/port01.jpg" alt="포트폴리오1" />
-                                    </div>
-                                    <div className="pText">
-                                        <h3>PORTFOLIO HWANG</h3>
-                                        <p>PORTFOLIO</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div className="port">
-                                <a href="/">
-                                    <div className="pImg">
-                                        <img src="img/port01.jpg" alt="포트폴리오1" />
-                                    </div>
-                                    <div className="pText">
-                                        <h3>PORTFOLIO HWANG</h3>
-                                        <p>PORTFOLIO</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div className="port">
-                                <a href="/">
-                                    <div className="pImg">
-                                        <img src="img/port01.jpg" alt="포트폴리오1" />
-                                    </div>
-                                    <div className="pText">
-                                        <h3>PORTFOLIO HWANG</h3>
-                                        <p>PORTFOLIO</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div className="port">
-                                <a href="/">
-                                    <div className="pImg">
-                                        <img src="img/port01.jpg" alt="포트폴리오1" />
-                                    </div>
-                                    <div className="pText">
-                                        <h3>PORTFOLIO HWANG</h3>
-                                        <p>PORTFOLIO</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div className="port">
-                                <a href="/">
-                                    <div className="pImg">
-                                        <img src="img/port01.jpg" alt="포트폴리오1" />
-                                    </div>
-                                    <div className="pText">
-                                        <h3>PORTFOLIO HWANG</h3>
-                                        <p>PORTFOLIO</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div className="port">
-                                <a href="/">
-                                    <div className="pImg">
-                                        <img src="img/port01.jpg" alt="포트폴리오1" />
-                                    </div>
-                                    <div className="pText">
-                                        <h3>PORTFOLIO HWANG</h3>
-                                        <p>PORTFOLIO</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div className="port">
-                                <a href="/">
-                                    <div className="pImg">
-                                        <img src="img/port01.jpg" alt="포트폴리오1" />
-                                    </div>
-                                    <div className="pText">
-                                        <h3>PORTFOLIO HWANG</h3>
-                                        <p>PORTFOLIO</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div className="port">
-                                <a href="/">
-                                    <div className="pImg">
-                                        <img src="img/port01.jpg" alt="포트폴리오1" />
-                                    </div>
-                                    <div className="pText">
-                                        <h3>PORTFOLIO HWANG</h3>
-                                        <p>PORTFOLIO</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+//함수형 컴퍼넌트-->권유 / --> 리액트 훅(useEffect)
+// 동기 비동기 / 콜백함수
+//클래스 컴퍼넌트
+//propise axios
+
+class Portfolio extends React.Component {
+    state = {
+        isLoading: true,
+        ports : []
+    }
+
+    getPorts = async () => {
+        const {
+            data: {
+                data: {ports},
+            },
+        } = await axios.get("https://webstoryboy.github.io/react5001/src/assets/json/portfolio.json");
+            // console.log(ports.data.data.ports);
+            this.setState({ ports: ports, isLoading : false})
+    }
+
+
+    // getPorts = async () => {
+    //     const {
+    //         data: {
+    //             data: {ports},
+    //         },
+    //     } = await axios.get("https://webstoryboy.github.io/react5001/src/assets/json/portfolio.json")
+    //     // console.log(ports.data.data.ports);
+    //     this.setState({ports, isLoading: false})
+    // }
+
+    //사이트가 시작되면 실행
+    componentDidMount(){
+        setTimeout(()=>{
+            //부분로딩?
+            // this.setState({isLoading: false});
+            this.getPorts();
+        }, 3000);
+    }
+
+    render(){
+        const {isLoading, ports} = this.state;
+
+        return (
+            <div>
+                {isLoading ? (
+                    <div className="loading">
+                        <span>로딩 중............</span>
                     </div>
-                
-                </section>
-            </Contents>
-
-            <Footer />
-        </div>
-    )
+                ) : (
+                    <div>
+                        <Header />
+                        <Contents>
+                            <section id="portCont">
+                                <div class="container">
+                                    <WrapTitle text={['portfolio','site']} />
+                                    <div class="port__cont">
+                                        {ports.map((port)=>(
+                                            <PortInfo 
+                                                key={port.id}
+                                                id={port.id}
+                                                title={port.title}
+                                                category={port.category}
+                                                link={port.link}
+                                                image={port.image}
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+                            </section>
+                            <ContInfo />
+                        </Contents>
+                        <Footer />
+                    </div>
+                )}
+            </div>
+        )
+    }
 }
+
+
+
+
+// function Portfolio(){
+//     return (
+//         <div>
+//             
+//         </div>
+//     )
+// }
 
 export default Portfolio;

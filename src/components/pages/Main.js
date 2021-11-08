@@ -1,9 +1,19 @@
-import React from "react";
-import Header from "../layouts/Header";
-import Footer from "../layouts/Footer";
-import Contents from "../layouts/Contents";
+import React from 'react';
+import Header from '../layouts/Header';
+import Footer from '../layouts/Footer';
+import Contents from '../layouts/Contents';
 
-function Main(){
+function Info({text}){
+    return <div>{text}</div>
+}
+
+const textInfo = [
+    {text : "We Provide"},
+    {text : "visual coding"},
+    {text : "solution"},
+    {text : "for you webs"},
+]
+function Main() {
     return (
         <div>
             <Header />
@@ -11,17 +21,14 @@ function Main(){
                 <section id="mainCont">
                     <h2 className="sr-only">메인 컨텐츠 영역입니다.</h2>
                     <div className="main__cont">
-                        <div>WE PROVIDE</div>
-                        <div>VISUAL CODING</div>
-                        <div>SOLUTIONS</div>
-                        <div>FOR YOU WEBS</div>
+                        {textInfo.map((info) => (
+                            <Info text={info.text} key={info.text} />
+                        ))}
                     </div>
                 </section>
             </Contents>
-
             <Footer />
         </div>
     )
 }
-
 export default Main;
