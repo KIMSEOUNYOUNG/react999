@@ -4,6 +4,7 @@ import Footer from "../layouts/Footer";
 import Contents from "../layouts/Contents";
 import WrapTitle from "../layouts/WrapTitle";
 import ContInfo from "../layouts/ContInfo";
+import Loading from "../layouts/Loading";
 import axios from "axios";
 import PortInfo from "../info/PortInfo";
 
@@ -54,17 +55,15 @@ class Portfolio extends React.Component {
         return (
             <div>
                 {isLoading ? (
-                    <div className="loading">
-                        <span>로딩 중............</span>
-                    </div>
+                    <Loading />
                 ) : (
                     <div>
                         <Header />
                         <Contents>
                             <section id="portCont">
-                                <div class="container">
+                                <div className="container">
                                     <WrapTitle text={['portfolio','site']} />
-                                    <div class="port__cont">
+                                    <div className="port__cont">
                                         {ports.map((port)=>(
                                             <PortInfo 
                                                 key={port.id}
