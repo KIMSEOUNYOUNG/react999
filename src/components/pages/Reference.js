@@ -16,7 +16,7 @@ class Reference extends React.Component {
         menu: 0,
         refers: [],
         refers2: [],
-        // refers3: []
+        refers3: []
     }
 
     getRefer = async () => {
@@ -36,13 +36,13 @@ class Reference extends React.Component {
         // console.log(htmlRefer);
         this.setState({refers2:cssRefer, isLoading:false});
 
-        // const {
-        //     data: {
-        //         data : {javaRefer},
-        //     },
-        // } = await axios.get("https://KIMSEOUNYOUNG.github.io/react999/src/assets/json/javaRefer.json");
-        // console.log(htmlRefer);
-        // this.setState({refers3:javaRefer, isLoading:false});
+        const {
+            data: {
+                data : {javaRefer},
+            },
+        } = await axios.get("https://KIMSEOUNYOUNG.github.io/react999/src/assets/json/javaRefer.json");
+        console.log(htmlRefer);
+        this.setState({refers3:javaRefer, isLoading:false});
     }
 
     changeMenu = (menuIndex) =>{
@@ -112,8 +112,7 @@ class Reference extends React.Component {
                                                 ))}
                                             </ul>
                                             <ul className={`${this.state.menu === 2? 'show': ''}`}>
-                                                test3
-                                                {/* {refers3.map((javas)=>(
+                                                {refers3.map((javas)=>(
                                                     <JavasInfo 
                                                         key={javas.id}
                                                         link={javas.link}
@@ -121,14 +120,10 @@ class Reference extends React.Component {
                                                         desc1={javas.desc1}
                                                         desc2={javas.desc2}
                                                         title={javas.title}
-                                                        element={javas.element}
+                                                        return1={javas.return1}
                                                         definition={javas.definition}
-                                                        tag={javas.tag}
-                                                        use={javas.use}
-                                                        version={javas.version}
-                                                        view={javas.view}
                                                     />
-                                                ))} */}
+                                                ))}
                                             </ul>
                                         </div>
                                     </div>
