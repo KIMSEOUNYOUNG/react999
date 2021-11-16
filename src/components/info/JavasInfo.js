@@ -9,7 +9,6 @@ function JavasInfo({link, id, title, desc1, desc2, return1, definition, paramete
                 <span className="num">{id}</span>
                 <span className="attr">{title}</span>
                 <span className="desc">{desc2}</span>
-                <span className="Inline">{return1}</span>
             </Link>
         </li>
     )
