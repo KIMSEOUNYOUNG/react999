@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 function CssInfo({link, id, title, desc1, desc2, default1, apply, version, definition, use}){
     return (
         <li>
-            <Link to={{ pathname: "refer-detail", state: {link, id, title, desc1, desc2, default1, apply, version, definition, use} }}>
+            <Link to={{ pathname: "css-detail", state: {link, id, title, desc1, desc2, default1, apply, version, definition, use} }}>
                 <span className="num">{id}</span>
                 <span className="attr">{title}</span>
                 <span className="desc">{desc2}</span>

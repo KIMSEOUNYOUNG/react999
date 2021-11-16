@@ -5,7 +5,7 @@ import Header from '../layouts/Header';
 import ContInfo from "../layouts/ContInfo";
 import {Link} from 'react-router-dom';
 
-class CssDetail extends React.Component {
+class JavasDetail extends React.Component {
 
     componentDidMount(){
         const { location, history } = this.props;
@@ -37,16 +37,12 @@ class CssDetail extends React.Component {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <th>기본값</th>
-                                                    <td>{location.state.default1}</td>
+                                                    <th>반환값</th>
+                                                    <td>{location.state.return1}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>적용</th>
-                                                    <td>{location.state.apply}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>사용성</th>
-                                                    <td>{location.state.use}</td>
+                                                    <th>파라미터</th>
+                                                    <td>{location.state.parameters}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -74,4 +70,4 @@ class CssDetail extends React.Component {
     }
 }
 
-export default CssDetail;
+export default JavasDetail;
