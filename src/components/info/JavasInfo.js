@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 function JavasInfo({link, id, title, desc1, desc2, return1, definition}){
     return (
         <li>
-            <Link to={{ pathname: "refer-detail", state: {link, id, title, desc1, desc2, return1, definition} }}>
+            <Link to={{ pathname: "javas-detail", state: {link, id, title, desc1, desc2, return1, definition} }}>
                 <span className="num">{id}</span>
                 <span className="attr">{title}</span>
                 <span className="desc">{desc2}</span>

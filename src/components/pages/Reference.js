@@ -76,6 +76,7 @@ class Reference extends React.Component {
                                             <h3 className={`${this.state.menu === 0? 'active': ''}`} onClick={() => this.changeMenu(0)}>HTML</h3>
                                             <h3 className={`${this.state.menu === 1? 'active': ''}`} onClick={() => this.changeMenu(1)}>CSS</h3>
                                             <h3 className={`${this.state.menu === 2? 'active': ''}`} onClick={() => this.changeMenu(2)}>JAVASCRIPT</h3>
+                                            
                                             <ul className={`${this.state.menu === 0? 'show': ''}`}>
                                                 {refers.map((refer)=>(
                                                     <ReferInfo 
